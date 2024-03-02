@@ -99,7 +99,7 @@ You would also require an IDE such as jupyter notebook or VScode. The steps invo
     * Type the following command
 
       ```bash
-      git clone https://github.com/pauline-banye/exploreAI_project_3.git
+      git clone https://github.com/pauline-banye/agricultural-data-pipeline.git
       ```
 - Once completed, you should see a new folder with the repository name in your chosen local directory. 
 
