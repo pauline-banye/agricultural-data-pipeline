@@ -1,4 +1,4 @@
-# Project: Agricultural Data Validation
+# Agricultural Data Pipeline
 
 > ## Table of Contents
 - [Overview](#overview)
@@ -8,8 +8,7 @@
     - [Clone the repository](#1-clone-the-repository)
     - [Set Up Anaconda on Windows 10](#2-set-up-anaconda-on-windows-10)
     - [Setup your IDE](#3-setup-your-ide)
-- [Cleaning up our Data Pipeline](#cleaning-up-our-data-pipeline)
-- [Modules](#modules)
+- [Building our Data Pipeline](#building-our-data-pipeline)
   - [Data Ingestion](#data-ingestion)
   - [Field data processor](#field-data-processor)
   - [Weather data processor](#weather-data-processor)
@@ -21,7 +20,7 @@
 <p align="justify">
 This project focuses on validating agricultural data by building a data pipeline for ingesting, cleaning, and validating agricultural data. The goal is to enhance the efficiency and accuracy of data validation processes in agricultural datasets. By building a modular pipeline, we can ensure the code is reusable, maintainable, and easier to debug.
 
-There are two notebooks in this project. The `Integrated_project_P3_Validating_our_data_student.ipynb` containing the step-by-step method and thought process involving building the pipeline, tests and analysis, and the `Validating_our_data.ipynb` which contains only the completed pipeline, tests, and analysis.
+There are two notebooks in this project. The `Integrated_project_P3_Validating_our_data_student.ipynb` consisting of the step-by-step method and thought process involving building the pipeline, tests and analysis, and the `Validating_our_data.ipynb` which contains only the completed pipeline, tests, and analysis.
 </p>
 
 #
@@ -108,21 +107,11 @@ You would also require an IDE such as jupyter notebook or VScode. The steps invo
 ### **2. Set Up Anaconda on Windows 10**
 
 - Go to the Anaconda website: [https://www.anaconda.com/download](https://www.anaconda.com/download)
-    * Choose Python 3.x graphical installer (**not** Python 2.x).
+    * Choose Python 3.x graphical installer.
     * Download the appropriate installer for your system (32-bit or 64-bit).
 - Run the Installer
     * Double-click the downloaded installer.
-    * **Important:** Choose "Just Me" during installation unless you want Anaconda accessible to all users on the computer.
     * Click "Next" and follow the on-screen instructions.
-    * **Tip:** It's recommended to keep the default installation path, but you can change it if preferred.
-- Verify Installation
-    * Open a command prompt (search for "cmd").
-    * Type `conda --version` and press Enter. If Anaconda is installed correctly, you should see the installed version displayed.
-- Optional: Add Anaconda to System Path (for easy access):**
-    * Search for "Environment Variables" in the Windows Start menu.
-    * Under "System variables," find the "Path" variable and click "Edit."
-    * Click "New" and add the path to your Anaconda installation directory (e.g., `C:\Users\<username>\Anaconda3`).
-    * Click "OK" on all open windows.
 - Open Anaconda prompt
     * `Note`: Anaconda Prompt is already installed alongside Anaconda on Windows 10.
 - Create and activate a new conda environment
@@ -159,13 +148,12 @@ You can use either jupyter note book or Visual Studio code (or both).
 
     * Download the installer from [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
     * Install the downloaded .exe file and follow the on-screen instructions.
-    * **Tip:** It's recommended to keep the default installation path, but you can change it if preferred.
 #
 
 
-> ## Cleaning up our Data Pipeline
+> ## Building our Data Pipeline
 <p align="justify">
-The project involves refining the data pipeline to ensure efficiency and accuracy. Previous efforts focused on building a data pipeline capable of ingesting and cleaning data with minimal manual intervention. The process includes:
+The project involves refining the data pipeline to ensure efficiency and accuracy. It is focused on building a data pipeline capable of ingesting and cleaning data with minimal manual intervention. The process includes:
 </p>
 
 - Data ingestion from databases and CSV files.
@@ -173,13 +161,10 @@ The project involves refining the data pipeline to ensure efficiency and accurac
 - Processing and cleanup of weather station data.
 - Automated data validation checks.
 
-#
-> ## Modules
-<p align="justify">
-The project is organized into modular components to enhance code readability, maintainability, and extensibility. The main modules include:
+The data pipeline is organized into modular components to enhance code readability, maintainability, and extensibility. The main modules include:
 </p>
 
-### **Data Ingestion**
+### **`Data Ingestion`**
 <p align="justify">
 This module handles data retrieval from various sources, including:
 </p>
@@ -188,8 +173,9 @@ This module handles data retrieval from various sources, including:
 - **query_data:** Executes a SQL query and returns the resulting DataFrame.
 - **read_csv_from_url:** Reads a CSV file from a URL and returns the DataFrame.
 #
-### **Field data processor**
+### **`Field data processor`**
 <p align="justify">
+
 This module provides a `FieldDataProcessor` class for cleaning and processing field data based on configuration parameters, including:
 </p>
 
@@ -199,8 +185,9 @@ This module provides a `FieldDataProcessor` class for cleaning and processing fi
 - **Weather Station Mapping:** Merges weather station data with the field data based on a mapping file.
 - **Process Orchestration:** Provides a `process` method that executes the entire data processing workflow.
 #
-### **Weather data processor**
+### **`Weather data processor`**
 <p align="justify">
+
 This module provides the `WeatherDataProcessor` class for processing weather data, which handles various weather data processing tasks, including:
 </p>
 
@@ -214,8 +201,9 @@ These modules encapsulate specific functionalities, making the code more organiz
 #
 > ## Testing
 <p align="justify">
+After building the pipeline, we need to to validate the output of the pipeline. That is where testing comes in.
 
-The `validate_data.py` script uses the `unittest` framework to perform several unit tests on the `field_data_processor.py` and `weather_data_processor.py` dataframes. This is to validate the output of the pipeline.
+The `validate_data.py` script uses the `unittest` framework to perform several unit tests on the `field_data_processor.py` and `weather_data_processor.py` dataframes. 
 </p>
 
 **Some of the tests included are:**
@@ -225,6 +213,16 @@ The `validate_data.py` script uses the `unittest` framework to perform several u
 - Ensures that all elevation values in the field and weather DataFrames are non-negative.
 - Verify that both weather and field DataFrames are not empty after processing.
 
+#
+> ## Conclusion
+
+By building a modular data pipeline, we achieve several benefits:
+
+* **Improved code organization:** The code is more structured and easier to navigate.
+* **Enhanced maintainability:** Modifying or extending functionalities becomes easier within specific modules.
+* **Increased reusability:** Modules can be reused in other projects with similar data processing needs.
+
+This approach ensures a clean, maintainable, and scalable data pipeline for our agricultural data analysis.
 
 #
 > ## Contributing to the project
@@ -241,4 +239,7 @@ Before adding a pull request, please note:
 
 All **`suggestions`** are welcome!
 #
-> ##### README Created by `pauline-banye`
+
+
+<!-- git commit -am "message" && git push origin branch_name -->
+##### README Created by `pauline-banye`
